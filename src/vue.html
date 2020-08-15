@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/vendors/bootstrap.css">
+    <link rel="stylesheet" href="../css/vendors/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/vendors/bootstrap.js"></script> 
+    <script src="vue.js"></script>
+    <title>My super interface</title>
+</head>
+<body>
+    
+    <div id="app">
+        <div class="container">
+            <div class="row">
+                <p class="junbotron">Login : <input type="text" v-model="user"/> | Vous etes connecte en tant que {{ user }}</p>
+            </div>
+
+            <div class="display-4" v-if="Commandes.length > 0"> Produits commander</div>
+            <ul>
+                <li v-for="command in Commandes">{{command}}</li>
+            </ul>
+            
+            <div v-bind:class="affichage">Produits disponibles</div>
+            <div class="row">
+                <div class="col-3" v-for="produit in produits">
+                    <div class="junbotron">
+                        {{ produit }}<br/>
+                        <button v-on:click="Commander(produit)">Commander</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                user: "josh",
+                produits: ["pizza", "bukari", "moko", "mangue"],
+                Commandes: [],
+                affichage: "display-4"
+            },
+            methods:{
+                Commander: function(produit){
+                    this.Commandes.push(produit);
+                }
+            }
+        })
+    </script>
+
+    
+</body>
+</html>
