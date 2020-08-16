@@ -23,12 +23,12 @@
                 <li v-for="command in Commandes">{{command}}</li>
             </ul>
             
-            <div v-bind:class="affichage">Produits disponibles</div>
+            <div :class="affichage">Produits disponibles</div>
             <div class="row">
                 <div class="col-3" v-for="produit in produits">
                     <div class="junbotron">
                         {{ produit }}<br/>
-                        <button v-on:click="Commander(produit)">Commander</button>
+                        <button @click="Commander(produit)">Commander</button>
                     </div>
                 </div>
             </div>
